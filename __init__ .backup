@@ -6,7 +6,7 @@ import zeep.cache
 import zeep.helpers
 import zeep.exceptions
 import requests
-import tempfile
+import 
 import os
 from collections import OrderedDict
 
@@ -138,6 +138,8 @@ class AXLHelper:
                                              name=name,
                                              value=value)
 
+agregue linea
+
     def list_service_parameter(self, **search_criteria):
         """
 
@@ -233,7 +235,7 @@ class AXLHelper:
         assert len(search_criteria) == 1, 'Only name or uuid can be used'
 
         tags = ['name', 'description', 'dialPlanWizardGenId', 'timeScheduleIdName', 'useOriginatingDeviceTimeZone',
-                'timeZone', 'partitionUsage']
+                'timeZone', 'partitionUsage']agregue palabra
         try:
             r = self.service.getRoutePartition(returnedTags={t: '' for t in tags}, **search_criteria)
         except zeep.exceptions.Fault as e:
@@ -255,7 +257,6 @@ class AXLHelper:
         p = self.get_route_partition(name=name)
         if p is None:
             # create
-            p = self.add_route_partition(name=name, description=description)
         else:
             # update
             p = self.update_route_partition(name=name, description=description)
@@ -371,7 +372,6 @@ class AXLHelper:
                                                       'pattern')
         r = self.service.listCalledPartyTransformationPattern(searchCriteria=search_criteria,
                                                               returnedTags={t: '' for t in self.CDPTX_TAGS})
-        return self.handle_list_response(r)
 
     def add_called_party_transformation_pattern(self, **values):
         r = self.service.addCalledPartyTransformationPattern(calledPartyTransformationPattern=values)
